@@ -4,7 +4,7 @@
 #include <vector>
 using namespace std;
 
-vector<string> split(const string &s, char delim) {
+vector<string> split(const string &s, const char delim) {
     vector<string> elems;
     string item;
     for (char ch: s) {
@@ -41,7 +41,7 @@ vector<int> split_size(const string &s, char delim) {
 }
 
 int main() {
-    string s = "Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics.";
+    const string s = "Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics.";
     vector<int> ss;
     ss = split_size(s, ' ');
     for (int x : ss) {
