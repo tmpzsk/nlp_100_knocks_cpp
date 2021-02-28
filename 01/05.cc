@@ -56,7 +56,7 @@ int main() {
         cout << s << endl;
     }
     // list
-    sss = n_gram(s_list, 1);
+    sss = n_gram(s_list, 2);
     for (vector<string> ss: sss) {
         cout << "[";
         for (string s : ss) {
