@@ -1,7 +1,7 @@
 #include <iostream>
 #include <regex>
 #include <string>
-#include <map>
+#include <unordered_map>
 #include <vector>
 using namespace std;
 
@@ -27,7 +27,7 @@ int main() {
     const string s = "Hi He Lied Because Boron Could Not Oxidize Fluorine. New Nations Might Also Sign Peace Security Clause. Arthur King Can.";
     const vector<int>  condition{1, 5, 6, 7, 8, 9, 15, 16, 19};
     vector<string> ss;
-    map<string, int> m;
+    unordered_map<string, int> m;
     ss = split(s, ' ');
 
     int index = 1;
