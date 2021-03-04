@@ -1,0 +1,100 @@
+#include <algorithm>
+#include <iostream>
+#include <regex>
+#include <set>
+#include <unordered_set>
+#include <string>
+#include <vector>
+using namespace std;
+
+// 和集合
+unordered_set<string> unique(const vector<string> X, const vector<string> Y) {
+    unordered_set<string> unique;
+    for (string x: X) {
+        unique.insert(x);
+    }
+    for (string y: Y) {
+        unique.insert(y);
+    }
+    return unique;
+}
+
+// 積集合
+unordered_set<string> intersection(const vector<string> X, const vector<string> Y) {
+    unordered_set<string> x_uniq;
+    unordered_set<string> y_uniq;
+    unordered_set<string> intersection;
+    // 各文字列内の重複を無くす
+    for (string x: X) {
+        x_uniq.insert(x);
+    }
+    for (string y: Y) {
+        y_uniq.insert(y);
+    }
+    // count: 存在すれば追加
+    for (string x: x_uniq) {
+        if ( y_uniq.count(x) ) {
+            intersection.insert(x);
+        }
+    }
+    return intersection;
+}
+
+// 差集合
+unordered_set<string> difference(const vector<string> X, const vector<string> Y) {
+    unordered_set<string> x_uniq;
+    unordered_set<string> y_uniq;
+    // 各文字列内の重複を無くす
+    for (string x: X) {
+        x_uniq.insert(x);
+    }
+    for (string y: Y) {
+        y_uniq.insert(y);
+    }
+    // count: 存在すれば削除
+    for (string x: x_uniq) {
+        if ( y_uniq.count(x) ) {
+            y_uniq.erase(x);
+        }
+    }
+    return y_uniq;
+}
+
+vector<string> n_gram(const string &s, const int n) {
+    vector<string> elems;
+    for (int i = 0; i <= s.size() - n; i++) {
+        string k = s.substr(i, n);
+        elems.push_back(k);
+    }
+    return elems;
+}
+
+int main() {
+    const string x = "paraparaparadise";
+    const string y = "paragraph";
+    const string item = "se";
+    vector<string> X;
+    vector<string> Y;
+    vector<string> result;
+    // string
+    X = n_gram(x, 2);
+    Y = n_gram(y, 2);
+    // seがあるかどうか
+    if ( std::find(X.begin(), X.end(), item) != X.end()) {
+       cout << "seあります" << endl;
+    } else {
+       cout << "seないです" << endl;
+    }
+    if ( std::find(Y.begin(), Y.end(), item) != Y.end()) {
+       cout << "seあります" << endl;
+    } else {
+       cout << "seないです" << endl;
+    }
+    // 各集合の計算
+    unordered_set<string> u = unique(X, Y);
+    unordered_set<string> i = intersection(X, Y);
+    unordered_set<string> d = difference(X, Y);
+    for (string r : d) {
+        cout << r << endl;
+    }
+}
