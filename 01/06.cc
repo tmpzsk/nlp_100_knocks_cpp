@@ -9,28 +9,16 @@ using namespace std;
 
 // 和集合
 unordered_set<string> unique(const vector<string> X, const vector<string> Y) {
-    unordered_set<string> unique;
-    for (string x: X) {
-        unique.insert(x);
-    }
-    for (string y: Y) {
-        unique.insert(y);
-    }
+    unordered_set<string> unique(X.begin(), X.end());
+    unique.insert(Y.begin(), Y.end());
     return unique;
 }
 
 // 積集合
 unordered_set<string> intersection(const vector<string> X, const vector<string> Y) {
-    unordered_set<string> x_uniq;
-    unordered_set<string> y_uniq;
+    unordered_set<string> x_uniq(X.begin(), X.end());
+    unordered_set<string> y_uniq(Y.begin(), Y.end());
     unordered_set<string> intersection;
-    // 各文字列内の重複を無くす
-    for (string x: X) {
-        x_uniq.insert(x);
-    }
-    for (string y: Y) {
-        y_uniq.insert(y);
-    }
     // count: 存在すれば追加
     for (string x: x_uniq) {
         if ( y_uniq.count(x) ) {
@@ -42,15 +30,8 @@ unordered_set<string> intersection(const vector<string> X, const vector<string> 
 
 // 差集合
 unordered_set<string> difference(const vector<string> X, const vector<string> Y) {
-    unordered_set<string> x_uniq;
-    unordered_set<string> y_uniq;
-    // 各文字列内の重複を無くす
-    for (string x: X) {
-        x_uniq.insert(x);
-    }
-    for (string y: Y) {
-        y_uniq.insert(y);
-    }
+    unordered_set<string> x_uniq(X.begin(), X.end());
+    unordered_set<string> y_uniq(Y.begin(), Y.end());
     // count: 存在すれば削除
     for (string x: x_uniq) {
         if ( y_uniq.count(x) ) {
