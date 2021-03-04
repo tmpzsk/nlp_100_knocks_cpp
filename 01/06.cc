@@ -80,12 +80,12 @@ int main() {
     X = n_gram(x, 2);
     Y = n_gram(y, 2);
     // seがあるかどうか
-    if ( std::find(X.begin(), X.end(), item) != X.end()) {
+    if ( find(X.begin(), X.end(), item) != X.end()) {
        cout << "seあります" << endl;
     } else {
        cout << "seないです" << endl;
     }
-    if ( std::find(Y.begin(), Y.end(), item) != Y.end()) {
+    if ( find(Y.begin(), Y.end(), item) != Y.end()) {
        cout << "seあります" << endl;
     } else {
        cout << "seないです" << endl;
