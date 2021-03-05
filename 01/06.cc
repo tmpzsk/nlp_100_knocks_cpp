@@ -16,15 +16,10 @@ unordered_set<string> unique(const vector<string> X, const vector<string> Y) {
 
 // 積集合
 unordered_set<string> intersection(const vector<string> X, const vector<string> Y) {
-    unordered_set<string> x_uniq(X.begin(), X.end());
-    unordered_set<string> y_uniq(Y.begin(), Y.end());
     unordered_set<string> intersection;
-    // count: 存在すれば追加
-    for (string x: x_uniq) {
-        if ( y_uniq.count(x) ) {
-            intersection.insert(x);
-        }
-    }
+    set_intersection(X.begin(), X.end(),
+                     Y.begin(), Y.end(),
+                     inserter(intersection, intersection.end()));
     return intersection;
 }
 
@@ -75,7 +70,7 @@ int main() {
     unordered_set<string> u = unique(X, Y);
     unordered_set<string> i = intersection(X, Y);
     unordered_set<string> d = difference(X, Y);
-    for (string r : d) {
+    for (string r : i) {
         cout << r << endl;
     }
 }
