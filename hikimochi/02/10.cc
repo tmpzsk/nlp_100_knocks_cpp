@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     string s;
 
     if (ifs.fail()) {
-        cerr << "Failed to open file." << endl;
+        cerr << "Failed to open file. " << argv[1] <<endl;
         return -1;
     }
 
