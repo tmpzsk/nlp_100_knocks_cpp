@@ -5,7 +5,6 @@ using namespace std;
 
 
 int main(int argc, char *argv[]) {
-    vector<int> key;
     ifstream ifs(argv[1]);
     string s;
 
