@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <regex>
 #include <string>
 using namespace std;
 
@@ -9,13 +10,12 @@ int main(int argc, char *argv[]) {
     string s;
 
     if (ifs.fail()) {
-        cerr << "Failed to open file." << endl;
+        cerr << "Failed to open file. " << argv[1] << endl;
         return -1;
     }
 
-    int cnt = 0;
     while (getline(ifs, s)) {
-        cnt++;
+        s = regex_replace(s, regex("\t"), " ");
+        cout << s << endl;
     }
-    cout << cnt << endl;
 }
