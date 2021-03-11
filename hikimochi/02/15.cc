@@ -20,16 +20,14 @@ int main(int argc, char *argv[]) {
         cerr << "Please use positive number." << endl;
     }
 
-    int cnt = 0;
     // 行数のカウント
     while(getline(ifs, s)) { 
         vec.push_back(s);
-        cnt++;
     }
     // 出力を始める行番号（ファイルの行数を超えるときはすべて出力）
     int start_line;
-    if ( (cnt - n) < 0 ) start_line = 0;
-    else start_line = cnt - n;
+    if ( (vec.size() - n) < 0 ) start_line = 0;
+    else start_line = vec.size() - n;
     // 出力
     for (int i = 0; i < vec.size(); ++i) {
         if (i >= start_line) {
