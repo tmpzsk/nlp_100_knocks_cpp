@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     ofstream outputfile(argv[1]);
     string s1, s2;
 
-    while ( ( getline(ifs1, s1) && getline(ifs2, s2) ) || getline(ifs2, s2) ) {
+    while ( ( getline(ifs1, s1) && getline(ifs2, s2) ) || ( getline(ifs2, s2) || getline(ifs2, s2) ) ) {
         outputfile << s1 << "\t" << s2 << endl;
     }
     outputfile.close();
