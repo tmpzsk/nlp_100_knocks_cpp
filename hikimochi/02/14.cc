@@ -4,8 +4,9 @@
 #include <stdlib.h>
 
 int main(int argc, char *argv[]) {
+    const int n = atoi(argv[2]);
     if (auto ifs = std::ifstream(argv[1])) {
-        if (int n = atoi(argv[2]) && n > 0) {
+        if (n > 0) {
             std::string s;
             int cnt = 0;
             // 指定された行番号まで標準出力
